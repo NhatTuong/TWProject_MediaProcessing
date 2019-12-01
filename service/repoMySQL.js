@@ -48,11 +48,10 @@ repoMySQL.saveFoodItemsFolder = async () => {
         for (let i=0; i<files.length; ++i) {
             let filename = files[i]
             let splitResult = filename.split('_')
-            let storeID = splitResult[0]
-            let foodID = splitResult[1]
+            let foodID = splitResult[0]
             let imgPath = "https://twproject-server.s3.amazonaws.com/Media/FoodItems/" + filename
 
-            await myDB.query('UPDATE food_item SET img = ? WHERE food_id = ? AND store_id = ?', [imgPath, foodID, storeID])
+            await myDB.query('UPDATE food_item SET img = ? WHERE food_id = ?', [imgPath, foodID])
             await myDB.end()
         }
     });
