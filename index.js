@@ -5,7 +5,7 @@ let serviceS3 = require('./service/serviceS3')
 let repoMySQL = require('./service/repoMySQL')
 
 // Origin path for processing everything
-app.get('/', async (req, res) => {
+app.get('/loadimages', async (req, res) => {
     // Processing all files from 3 folders (Banners, FoodItems, Stores)
     // -----
     // fileProcessing.processBannersFolder()

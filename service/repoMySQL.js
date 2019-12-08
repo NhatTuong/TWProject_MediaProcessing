@@ -70,7 +70,7 @@ repoMySQL.saveStoresFolder = async () => {
             let splitResult = filename.split('_')
             let storeID = splitResult[0]
             let typeFile = splitResult[splitResult.length - 1].split('.')[0]
-            let imgPath = "https://twproject-server.s3.amazonaws.com/Media/Banners/" + filename
+            let imgPath = "https://twproject-server.s3.amazonaws.com/Media/Stores/" + filename
 
             if (typeFile == "avatar") {
                 await myDB.query('UPDATE store SET imgLink = ? WHERE store_id = ?', [imgPath, storeID])
