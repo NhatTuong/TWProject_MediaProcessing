@@ -13,9 +13,9 @@ const s3 = new AWS.S3({
 });
 
 /*  Link hình ảnh trên AWS S3 của Bucket "twproject-server": 
-    + Folder Banners: https://twproject-server.s3.amazonaws.com/Media/Banners/ {filename}
-    + Folder FoodItems: https://twproject-server.s3.amazonaws.com/Media/FoodItems/ {filename}
-    + Folder Stores: https://twproject-server.s3.amazonaws.com/Media/Stores/ {filename}
+    + Folder Banners: https://twproject-server.s3.amazonaws.com/Media02/Banners/{filename}
+    + Folder FoodItems: https://twproject-server.s3.amazonaws.com/Media02/FoodItems/{filename}
+    + Folder Stores: https://twproject-server.s3.amazonaws.com/Media02/Stores/{filename}
 */
 
 // Creating new bucket
@@ -46,7 +46,7 @@ serviceS3.uploadBannersFolder = () => {
             fs.readFile(pathFile, (err, fileBuffer) => {
                 let params = {
                     Bucket: BUCKET_NAME,
-                    Key: "Media/Banners/" + filename,
+                    Key: "Media02/Banners/" + filename,
                     Body: fileBuffer,
                     ContentType: "image/jpeg"
                 };
@@ -73,7 +73,7 @@ serviceS3.uploadFoodItemsFolder = () => {
             fs.readFile(pathFile, (err, fileBuffer) => {
                 let params = {
                     Bucket: BUCKET_NAME,
-                    Key: "Media/FoodItems/" + filename,
+                    Key: "Media02/FoodItems/" + filename,
                     Body: fileBuffer,
                     ContentType: "image/jpeg"
                 };
@@ -100,7 +100,7 @@ serviceS3.uploadStoresFolder = () => {
             fs.readFile(pathFile, (err, fileBuffer) => {
                 let params = {
                     Bucket: BUCKET_NAME,
-                    Key: "Media/Stores/" + filename,
+                    Key: "Media02/Stores/" + filename,
                     Body: fileBuffer,
                     ContentType: "image/jpeg"
                 };

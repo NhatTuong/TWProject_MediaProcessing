@@ -13,9 +13,9 @@ const myDB = require('serverless-mysql')({
 })
 
 /*  Link hình ảnh trên AWS S3 của Bucket "twproject-server": 
-    + Folder Banners: https://twproject-server.s3.amazonaws.com/Media/Banners/ {filename}
-    + Folder FoodItems: https://twproject-server.s3.amazonaws.com/Media/FoodItems/ {filename}
-    + Folder Stores: https://twproject-server.s3.amazonaws.com/Media/Stores/ {filename}
+    + Folder Banners: https://twproject-server.s3.amazonaws.com/Media02/Banners/ {filename}
+    + Folder FoodItems: https://twproject-server.s3.amazonaws.com/Media02/FoodItems/ {filename}
+    + Folder Stores: https://twproject-server.s3.amazonaws.com/Media02/Stores/ {filename}
 */
 
 // Save Banners image folder
@@ -29,7 +29,7 @@ repoMySQL.saveBannersFolder = async () => {
         for (let i=0; i<files.length; ++i) {
             let filename = files[i]
             let storeID = filename.split('_')[0]
-            let imgPath = "https://twproject-server.s3.amazonaws.com/Media/Banners/" + filename
+            let imgPath = "https://twproject-server.s3.amazonaws.com/Media02/Banners/" + filename
 
             await myDB.query('UPDATE banner SET img = ? WHERE store_id = ?', [imgPath, storeID])
             await myDB.end()
@@ -49,7 +49,7 @@ repoMySQL.saveFoodItemsFolder = async () => {
             let filename = files[i]
             let splitResult = filename.split('_')
             let foodID = splitResult[0]
-            let imgPath = "https://twproject-server.s3.amazonaws.com/Media/FoodItems/" + filename
+            let imgPath = "https://twproject-server.s3.amazonaws.com/Media02/FoodItems/" + filename
 
             await myDB.query('UPDATE food_item SET img = ? WHERE food_id = ?', [imgPath, foodID])
             await myDB.end()
@@ -70,7 +70,7 @@ repoMySQL.saveStoresFolder = async () => {
             let splitResult = filename.split('_')
             let storeID = splitResult[0]
             let typeFile = splitResult[splitResult.length - 1].split('.')[0]
-            let imgPath = "https://twproject-server.s3.amazonaws.com/Media/Stores/" + filename
+            let imgPath = "https://twproject-server.s3.amazonaws.com/Media02/Stores/" + filename
 
             if (typeFile == "avatar") {
                 await myDB.query('UPDATE store SET imgLink = ? WHERE store_id = ?', [imgPath, storeID])
